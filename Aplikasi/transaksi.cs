@@ -45,7 +45,7 @@ namespace Aplikasi
                                  INNER JOIN transactions t ON td.id_transaksi = t.id_transaksi
                                  INNER JOIN books b ON td.id_buku = b.id_buku
                                  WHERE t.tanggal BETWEEN @mulai AND @selesai";
-                //untuk mengangkut teks rumus mesin penarik laporan
+                //untuk mengangkut teks rumus mesin penarik laporan k
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     //parameters fungsinya : sebagai kamar kosong  atau biasa di sebut sebagai saringan keamanan
