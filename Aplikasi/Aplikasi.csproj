@@ -99,6 +99,42 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDashBoardAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashBoardAdmin.Designer.cs">
+      <DependentUpon>FormDashBoardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLaporanPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLaporanPenjualan.Designer.cs">
+      <DependentUpon>FormLaporanPenjualan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManajemenBuku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManajemenBuku.Designer.cs">
+      <DependentUpon>FormManajemenBuku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManajemenStok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManajemenStok.Designer.cs">
+      <DependentUpon>FormManajemenStok.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransaksiPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransaksiPenjualan.Designer.cs">
+      <DependentUpon>FormTransaksiPenjualan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserKasir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserKasir.Designer.cs">
+      <DependentUpon>FormUserKasir.cs</DependentUpon>
+    </Compile>
     <Compile Include="Koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +142,24 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashBoardAdmin.resx">
+      <DependentUpon>FormDashBoardAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLaporanPenjualan.resx">
+      <DependentUpon>FormLaporanPenjualan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManajemenBuku.resx">
+      <DependentUpon>FormManajemenBuku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManajemenStok.resx">
+      <DependentUpon>FormManajemenStok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransaksiPenjualan.resx">
+      <DependentUpon>FormTransaksiPenjualan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserKasir.resx">
+      <DependentUpon>FormUserKasir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
