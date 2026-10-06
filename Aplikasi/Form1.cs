@@ -16,7 +16,7 @@ namespace Aplikasi
         {
             InitializeComponent();
         }
-
+        //fgffgfgfgg
         private void Form1_Load(object sender, EventArgs e)
         {
 
