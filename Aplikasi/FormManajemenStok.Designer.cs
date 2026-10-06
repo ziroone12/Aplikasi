@@ -62,6 +62,7 @@
             this.btnKembaliDashboard.TabIndex = 28;
             this.btnKembaliDashboard.Text = "Dashboard";
             this.btnKembaliDashboard.UseVisualStyleBackColor = true;
+            this.btnKembaliDashboard.Click += new System.EventHandler(this.btnKembaliDashboard_Click);
             // 
             // dgvStokGudang
             // 
@@ -73,6 +74,7 @@
             this.dgvStokGudang.RowTemplate.Height = 28;
             this.dgvStokGudang.Size = new System.Drawing.Size(1140, 244);
             this.dgvStokGudang.TabIndex = 27;
+            this.dgvStokGudang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStokGudang_CellContentClick);
             // 
             // btnSimpanStok
             // 
@@ -83,6 +85,7 @@
             this.btnSimpanStok.TabIndex = 26;
             this.btnSimpanStok.Text = "Simpan";
             this.btnSimpanStok.UseVisualStyleBackColor = true;
+            this.btnSimpanStok.Click += new System.EventHandler(this.btnSimpanStok_Click);
             // 
             // txtJumlahStokBaru
             // 
@@ -150,6 +153,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormManajemenStok";
             this.Text = "FormManajemenStok";
+            this.Load += new System.EventHandler(this.FormManajemenStok_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStokGudang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
