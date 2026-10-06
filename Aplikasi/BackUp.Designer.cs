@@ -40,10 +40,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Agency FB", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(47, 106);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(70, 163);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(695, 14);
+            this.label8.Size = new System.Drawing.Size(1041, 20);
             this.label8.TabIndex = 26;
             this.label8.Text = "_________________________________________________________________________________" +
     "________________________________________________________________________________" +
@@ -51,10 +50,9 @@
             // 
             // btnKembaliDashboard
             // 
-            this.btnKembaliDashboard.Location = new System.Drawing.Point(38, 55);
-            this.btnKembaliDashboard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKembaliDashboard.Location = new System.Drawing.Point(57, 85);
             this.btnKembaliDashboard.Name = "btnKembaliDashboard";
-            this.btnKembaliDashboard.Size = new System.Drawing.Size(92, 30);
+            this.btnKembaliDashboard.Size = new System.Drawing.Size(138, 46);
             this.btnKembaliDashboard.TabIndex = 25;
             this.btnKembaliDashboard.Text = "Dashboard";
             this.btnKembaliDashboard.UseVisualStyleBackColor = true;
@@ -62,20 +60,18 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(421, 182);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRestore.Location = new System.Drawing.Point(632, 280);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(237, 75);
+            this.btnRestore.Size = new System.Drawing.Size(356, 115);
             this.btnRestore.TabIndex = 24;
             this.btnRestore.Text = "Restone";
             this.btnRestore.UseVisualStyleBackColor = true;
             // 
             // btnBackup
             // 
-            this.btnBackup.Location = new System.Drawing.Point(156, 182);
-            this.btnBackup.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBackup.Location = new System.Drawing.Point(234, 280);
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(238, 75);
+            this.btnBackup.Size = new System.Drawing.Size(357, 115);
             this.btnBackup.TabIndex = 23;
             this.btnBackup.Text = "Back Up";
             this.btnBackup.UseVisualStyleBackColor = true;
@@ -83,10 +79,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(327, 139);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(490, 214);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 13);
+            this.label2.Size = new System.Drawing.Size(171, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "Aksi Pengamanan File:";
             // 
@@ -95,24 +90,26 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(149, 4);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(224, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(509, 37);
+            this.label1.Size = new System.Drawing.Size(749, 54);
             this.label1.TabIndex = 21;
             this.label1.Text = "BACK UP DAN RESTONE DATA SYSTEM";
             // 
             // BackUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 370);
+            this.BackgroundImage = global::Aplikasi.Properties.Resources._8;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1207, 569);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnKembaliDashboard);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BackUp";
             this.Text = "BackUp";
             this.Load += new System.EventHandler(this.BackUp_Load);

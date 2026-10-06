@@ -23,6 +23,7 @@ namespace Aplikasi
             label2.BackColor = Color.Transparent;
             label3.BackColor = Color.Transparent;
             label4.BackColor = Color.Transparent;
+            label5.BackColor = Color.Transparent;
             label1.Visible = false;
         }
 
@@ -57,7 +58,7 @@ namespace Aplikasi
                     }
                     else
                     {
-                        FormDashBoardKasir kasirDash = new FormDashBoardKasir();
+                        FormDashboardKasir kasirDash = new FormDashboardKasir();
                         kasirDash.Show(); // Membuka mesin utama point of sales kasirc
                     }
                 }
@@ -77,31 +78,53 @@ namespace Aplikasi
 
         private void btnDaftar_Click(object sender, EventArgs e)
         {
-            // 1. Menyaring kelengkapan isian text field registrasi user baru
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || cmbRoleDaftar.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                string.IsNullOrWhiteSpace(txtKodeRegistrasi.Text) ||
+                cmbRoleDaftar.SelectedItem == null)
             {
-                MessageBox.Show("Harap isi seluruh field termasuk pilihan Role registrasi.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // MessageBox.Show = Fungsi bawaan untuk memunculkan kotak pesan pop-up dialog tanda seru kuning (.Warning) di layar monitor.
+                MessageBox.Show("Harap isi seluruh field termasuk pilihan Role dan Kode Rahasia Registrasi.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // return = Perintah untuk menghentikan paksa jalannya kode di bawah agar user mengisi ulang form.
             }
 
+            // 2. VALIDASI KODE RAHASIA PENDAFTARAN (FITUR PENGAMANAN BARU)
+            // Teks.Trim() = Fungsi bawaan untuk membuang spasi kosong tidak sengaja di ujung depan/belakang kata ketikan user.
+            // Operator logika tidak sama dengan '!=' artinya jika kata yang diketik kasir/admin bukan "1111", maka akses diblokir.
+            if (txtKodeRegistrasi.Text.Trim() != "1111")
+            {
+                // Menampilkan pesan error penolakan keras bertanda ikon silang merah (.Error) karena kode salah.
+                MessageBox.Show("Kode Rahasia Pendaftaran Salah! Anda tidak diizinkan membuat akun di sistem ini.", "Akses Ditolak", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Hentikan paksa proses, data pendaftaran tidak akan pernah dikirim ke database MySQL.
+            }
+
+            // 3. PROSES INSTANSIASI OOP
+            // Membuat cetakan objek baru bernama 'objekUser' berdasarkan blueprint Kelas Cetakan data 'User.cs'.
             User objekUser = new User();
 
-            // 2. Mencegah pendaftaran nama akun yang sama/kembar di dalam database
+            // 4. MENCEGAH DUPLIKASI NAMA AKUN KEMBAR
+            // Memanggil fungsi verifikasi dari kelas User untuk memastikan nama username belum pernah diklaim orang lain di database.
             if (objekUser.CekUsernameTerdaftar(txtUsername.Text.Trim()))
             {
                 MessageBox.Show("Username sudah digunakan, gunakan nama lain.", "Registrasi Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 3. Mengisi properti data objek model berdasarkan masukan kotak teks antarmuka
+            // 5. MENYALIN DATA KE ATRIBUT PROPERTI OBJEK KELAS
+            // Memindahkan teks bersih dari form ke dalam variabel penampung sementara di memori RAM milik objek user.
             objekUser.Username = txtUsername.Text.Trim();
             objekUser.Password = txtPassword.Text.Trim();
-            objekUser.Role = cmbRoleDaftar.SelectedItem.ToString();
+            objekUser.Role = cmbRoleDaftar.SelectedItem.ToString(); // Mengubah pilihan ComboBox menjadi string teks murni (.ToString).
 
-            // 4. Menjalankan fungsi simpan rekor pendaftaran akun baru ke tabel users database mysql
+            // 6. MENJALANKAN KUERI SQL TULIS DATA BARU
+            // Menembakkan kueri INSERT 'RegistrasiUserBaru()' agar akun kasir/admin tersimpan mutlak permanen di database MySQL XAMPP.
             if (objekUser.Registrasiuserbaru())
             {
+                // Tampilkan kotak sukses bertanda centang biru (.Information) jika data berhasil masuk tabel database.
                 MessageBox.Show("User Baru berhasil terdaftar di dalam sistem!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Membersihkan isi kotak teks kode rahasia agar kosong kembali setelah pendaftaran selesai
+                txtKodeRegistrasi.Clear();
             }
         }
         private void Form_FormClosing(object sender, FormClosingEventArgs e)

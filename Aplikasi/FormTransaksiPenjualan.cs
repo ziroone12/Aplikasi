@@ -14,7 +14,7 @@ namespace Aplikasi
 {
     public partial class FormTransaksiPenjualan : Form
     {
-        // Membuat wadah tabel virtual terputus koneksi (Disconnected Architecture) untuk menampung list belanjaan kasir di RAM komputer
+        // Membuat wadah tabel virtual terputus koneksi Disconnected Architecture untuk menampung list belanjaan kasir di RAM komputer
         private DataTable keranjangTemp;
         private int currentIdBuku = 0;
         private string currentKodeBuku = "";
@@ -102,15 +102,15 @@ namespace Aplikasi
             }
         }
 
-        // Menghitung akumulasi total pertambahan penggabungan nominal uang dari baris subtotal keranjang
+        //Menghitung akumulasi total pertambahan penggabungan nominal uang dari baris subtotal keranjang
         private void HitungGrandTotal()
         {
-            grandTotal = 0; // Mengeset titik awal penjumlahan di nominal dasar angka 0
+            grandTotal = 0; //Mengeset titik awal penjumlahan di nominal dasar angka 0
             foreach (DataRow row in keranjangTemp.Rows)
             {
-                grandTotal += Convert.ToDecimal(row["Subtotal"]); // Akumulasi akumulatif penggabungan nominal subtotal
+                grandTotal += Convert.ToDecimal(row["Subtotal"]); //Akumulasi akumulatif penggabungan nominal subtotal
             }
-            lblTotalHarga.Text = grandTotal.ToString("N0"); // Merender angka total belanja kasir ke komponen label teks UI
+            lblTotalHarga.Text = grandTotal.ToString("N0"); //Merender angka total belanja kasir ke komponen label teks UI
         }
 
         private void ResetPencarianBuku()
@@ -138,13 +138,13 @@ namespace Aplikasi
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
                 conn.Open();
-                // 1. Memulai sesi pengamanan SQL Transaction di database untuk menangani kegagalan penyimpanan data terputus di tengah jalan
+                //Memulai sesi pengamanan SQL Transaction di database untuk menangani kegagalan penyimpanan data terputus di tengah jalan
                 MySqlTransaction trans = conn.BeginTransaction();
 
                 try
                 {
                     long idTransaksiBaru = 0;
-                    // 2. Menulis data master rekor utama induk nota transaksi keuangan
+                    //Menulis data master rekor utama induk nota transaksi keuangan
                     string queryMaster = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (@tgl, @total, @user)";
                     using (MySqlCommand cmdMaster = new MySqlCommand(queryMaster, conn, trans))
                     {
@@ -157,7 +157,7 @@ namespace Aplikasi
                         idTransaksiBaru = cmdMaster.LastInsertedId;
                     }
 
-                    // 3. Menjalankan proses perulangan (looping) baris daftar belanjaan di keranjang RAM lokal untuk disimpan masal ke database
+                    //Menjalankan proses perulangan (looping) baris daftar belanjaan di keranjang RAM lokal untuk disimpan masal ke database
                     foreach (DataRow row in keranjangTemp.Rows)
                     {
                         // Memasukkan detail pecahan item buku terjual ke tabel riwayat jembatan transaksi detail (transaction_details)
@@ -181,20 +181,38 @@ namespace Aplikasi
                         }
                     }
 
-                    // 4. Jika seluruh baris instruksi insert masal di atas sukses tanpa kendala, sahkan seluruh data tersimpan mutlak permanen
+                    // 1. Menyahkan seluruh paket operasi kueri simpan sukses tersimpan permanen di database
                     trans.Commit();
 
-                    // 5. Membuat kerangka teks struk kasir simulasi struk kertas kasir POS thermal printer toko buku
-                    string strukText = $"=== STRUK TOKO BUKU ===\nID Transaksi: {idTransaksiBaru}\nKasir: {Program.UsernameAktif}\nTotal: Rp. {grandTotal:N0}\n=====================\nTerima Kasih.";
-                    MessageBox.Show(strukText, "Simulasi Cetak Struk", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("Transaksi berhasil disimpan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Memanggil FormStruk dan mengoper seluruh variabel data nota kasir saat ini
+                    // Mengirim dataID Transaksi Baru, Nama Kasir Aktif, Nilai Grand Total, dan Tabel Keranjang Belanja Sementara
+                    Formstruk halamanStokCetak = new Formstruk(idTransaksiBaru.ToString(), Program.UsernameAktif, grandTotal, keranjangTemp);
+
+                    //Menampilkan FormStruk ke layar monitor dalam bentuk jendela pop-up dialog yang terpisah rapi
+                    halamanStokCetak.ShowDialog();
+
+                    //Notifikasi sukses pembukuan akhir setelah jendela struk ditutup kasir
+                    MessageBox.Show("Transaksi berhasil disimpan secara permanen ke database.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Mengosongkan isi tabel keranjang belanjaan lokal memori agar kasir siap melayani nota belanja baru kembali bersih
+                    keranjangTemp.Clear();
+                    HitungGrandTotal();
+
+
+                    //Jika seluruh baris instruksi insert masal di atas sukses tanpa kendala, sahkan seluruh data tersimpan mutlak permanen
+                    //trans.Commit();
+
+                    ////Membuat kerangka teks struk kasir simulasi struk kertas kasir POS thermal printer toko buku
+                    //string strukText = $"=== STRUK TOKO BUKU ===\nID Transaksi: {idTransaksiBaru}\nKasir: {Program.UsernameAktif}\nTotal: Rp. {grandTotal:N0}\n=====================\nTerima Kasih.";
+                    //MessageBox.Show(strukText, "Simulasi Cetak Struk", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Transaksi berhasil disimpan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     keranjangTemp.Clear(); // Kosongkan total tabel keranjang belanjaan lokal RAM kasir
                     HitungGrandTotal(); // Kembalikan nilai total pembukuan nota kasir ke angka bersih nol rupiah semula
                 }
                 catch (Exception ex)
                 {
-                    // 6. Apabila terjadi pemadaman listrik atau crash sistem ditengah jalan, batalkan dan pulihkan kondisi awal database utuh semula (Rollback)
+                    //Apabila terjadi pemadaman listrik atau crash sistem ditengah jalan, batalkan dan pulihkan kondisi awal database utuh semula (Rollback)
                     trans.Rollback();
                     MessageBox.Show("Gagal memproses transaksi kasir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

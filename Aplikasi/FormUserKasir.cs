@@ -16,5 +16,10 @@ namespace Aplikasi
         {
             InitializeComponent();
         }
+
+        private void FormUserKasir_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
