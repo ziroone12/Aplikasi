@@ -268,6 +268,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormTransaksiPenjualan";
             this.Text = "FormTransaksiPenjualan";
+            this.Load += new System.EventHandler(this.FormTransaksiPenjualan_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

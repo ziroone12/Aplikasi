@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Aplikasi
 {
@@ -226,6 +227,11 @@ namespace Aplikasi
             lblHarga.BackColor = Color.Transparent;
             label6.BackColor = Color.Transparent;
             lblStok.BackColor = Color.Transparent;
+        }
+
+        private void FormTransaksiPenjualan_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

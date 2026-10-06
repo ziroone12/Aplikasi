@@ -14,7 +14,7 @@ namespace Aplikasi
         //Di bawah ini adalah pembuatan Method (Fungsi) pencarian pintar tersebut
         public static DataTable CariBuku(string keyword)
         {
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable();// Menyiapkan wadah tabel virtual di RAM lokal komputer
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
                 // keylike fungsinya : buat  nyari data yang mirip
@@ -23,6 +23,7 @@ namespace Aplikasi
                 {
                     cmd.Parameters.AddWithValue("@key", keyword);
                     cmd.Parameters.AddWithValue("@keyLike", "%" + keyword + "%");
+                    // Menggunakan DataAdapter sebagai jembatan penarik data massal dari database ke DataTable lokal
                     using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
                     {
                         da.Fill(dt);

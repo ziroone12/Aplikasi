@@ -48,6 +48,10 @@ namespace Aplikasi
             Application.Exit();
         }
 
+        private void FormDashboardKasir_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
