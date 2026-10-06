@@ -160,6 +160,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormLaporanPenjualan";
             this.Text = "FormLaporanPenjualan";
+            this.Load += new System.EventHandler(this.FormLaporanPenjualan_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaporan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

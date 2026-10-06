@@ -6,8 +6,10 @@ using System.Windows.Forms;
 
 namespace Aplikasi
 {
-    internal static class Program
+    public static class Program
     {
+        public static int IDUserAktif = 0;
+        public static string UsernameAktif = "";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +18,7 @@ namespace Aplikasi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FromLogin());
+            Application.Run(new Form1());
         }
     }
 }
