@@ -37,7 +37,7 @@
             this.ppcStruk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ppcStruk.Location = new System.Drawing.Point(0, 0);
             this.ppcStruk.Name = "ppcStruk";
-            this.ppcStruk.Size = new System.Drawing.Size(328, 494);
+            this.ppcStruk.Size = new System.Drawing.Size(453, 494);
             this.ppcStruk.TabIndex = 0;
             // 
             // printDialog1
@@ -48,7 +48,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 494);
+            this.ClientSize = new System.Drawing.Size(453, 494);
             this.Controls.Add(this.ppcStruk);
             this.Name = "Formstruk";
             this.Text = "Formstruk";

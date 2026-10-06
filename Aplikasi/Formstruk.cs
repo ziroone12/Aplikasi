@@ -33,9 +33,24 @@ namespace Aplikasi
             this.namaKasir = kasir;
             this.totalBiaya = total;
             this.detailBelanja = keranjang;
+            // 1. Mengunci ukuran kertas ke mode ramping 58mm (Sudah kita bahas sebelumnya)
+            PaperSize ukuranKertasStruk = new PaperSize("StrukThermal58mm", 250, 600);
+            prntDoc.DefaultPageSettings.PaperSize = ukuranKertasStruk;
 
-            // Mengaitkan mesin cetak dengan Event Handler proses penggambaran teks struk
             prntDoc.PrintPage += new PrintPageEventHandler(GambarlayoutStruk);
+            ppcStruk.Document = prntDoc;
+
+            
+            // Mematikan sistem pengecilan otomatis bawaan Windows yang bikin tulisan ciut
+            ppcStruk.AutoZoom = false;
+
+            // Mengeset skala perbesaran gambar kertas langsung ke ukuran 100persen 
+            ppcStruk.Zoom = 1.0;
+            
+        
+
+        // Mengaitkan mesin cetak dengan Event Handler proses penggambaran teks struk
+        prntDoc.PrintPage += new PrintPageEventHandler(GambarlayoutStruk);
 
             // Menyambungkan mesin cetak ke dalam komponen visual layar struk (PrintPreviewControl)
             ppcStruk.Document = prntDoc;
