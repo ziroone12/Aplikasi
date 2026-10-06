@@ -61,6 +61,7 @@
             this.btnKembaliDashboard.TabIndex = 29;
             this.btnKembaliDashboard.Text = "Dashboard";
             this.btnKembaliDashboard.UseVisualStyleBackColor = true;
+            this.btnKembaliDashboard.Click += new System.EventHandler(this.btnKembaliDashboard_Click);
             // 
             // dgvLaporan
             // 
@@ -80,6 +81,7 @@
             this.btnEkspor.TabIndex = 27;
             this.btnEkspor.Text = "Ekspor";
             this.btnEkspor.UseVisualStyleBackColor = true;
+            this.btnEkspor.Click += new System.EventHandler(this.btnEkspor_Click);
             // 
             // btnFilter
             // 
@@ -89,6 +91,7 @@
             this.btnFilter.TabIndex = 26;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // dtpSelesai
             // 
@@ -153,7 +156,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormLaporanPenjualan";
             this.Text = "FormLaporanPenjualan";
-            this.Load += new System.EventHandler(this.FormLaporanPenjualan_Load_1);
+            this.Load += new System.EventHandler(this.FormLaporanPenjualan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLaporan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

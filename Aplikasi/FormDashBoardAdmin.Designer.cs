@@ -45,6 +45,7 @@
             this.btnLogout.TabIndex = 13;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnMenuBackup
             // 
@@ -54,6 +55,7 @@
             this.btnMenuBackup.TabIndex = 12;
             this.btnMenuBackup.Text = "Backup";
             this.btnMenuBackup.UseVisualStyleBackColor = true;
+            this.btnMenuBackup.Click += new System.EventHandler(this.btnMenuBackup_Click);
             // 
             // btnMenuLaporan
             // 
@@ -63,6 +65,7 @@
             this.btnMenuLaporan.TabIndex = 11;
             this.btnMenuLaporan.Text = "Laporan Penjualan";
             this.btnMenuLaporan.UseVisualStyleBackColor = true;
+            this.btnMenuLaporan.Click += new System.EventHandler(this.btnMenuLaporan_Click);
             // 
             // btnMenuStok
             // 
@@ -72,6 +75,7 @@
             this.btnMenuStok.TabIndex = 10;
             this.btnMenuStok.Text = "Management stok";
             this.btnMenuStok.UseVisualStyleBackColor = true;
+            this.btnMenuStok.Click += new System.EventHandler(this.btnMenuStok_Click);
             // 
             // btnMenuBuku
             // 
@@ -81,6 +85,7 @@
             this.btnMenuBuku.TabIndex = 9;
             this.btnMenuBuku.Text = "Management Buku";
             this.btnMenuBuku.UseVisualStyleBackColor = true;
+            this.btnMenuBuku.Click += new System.EventHandler(this.btnMenuBuku_Click);
             // 
             // lblSelamatDatang
             // 
@@ -122,7 +127,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDashBoardAdmin";
             this.Text = "FormDashBoardAdmin";
-            this.Load += new System.EventHandler(this.FormDashBoardAdmin_Load);
+            this.Load += new System.EventHandler(this.FormDashboardAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

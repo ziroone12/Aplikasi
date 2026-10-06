@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using MySql.Data.MySqlClient;
 
 
 namespace Aplikasi
@@ -18,16 +19,20 @@ namespace Aplikasi
         public string Password { get; set; }
         public string Role { get; set; }
 
-
+        // FUNGSI 1: VALIDASI LOGIN (SUDAH DISINKRONKAN KE TABEL 'users')
         public bool ValidasiLogin(string user, string pass, string roleterpilih)
         {
             bool status = false;
-            //membuat variabel baru bernama status yang hanya bisa menyimpan nilai kebenaran (boolean) dan menginisialisasi nilai awalnya sebagai false (salah)
 
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
-                conn.Open();
-                string query = "SELECT id_user, username, password, role FROM user WHERE username = @user AND password = @pass AND role = @role";
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                // PERBAIKAN: Nama tabel diubah dari 'user' menjadi 'users' sesuai dengan database MySQL Anda
+                string query = "SELECT id_user, username, password, role FROM users WHERE username = @user AND password = @pass AND role = @role";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@user", user);
@@ -36,7 +41,6 @@ namespace Aplikasi
 
                     try
                     {
-                        conn.Open();
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -47,34 +51,36 @@ namespace Aplikasi
                                 status = true;
                             }
                         }
-
                     }
-                    catch (Exception) { throw; } 
-                    // fungsi throw untuk memicu terjadinya pengecualian (exception) secara sengaja ketika ada kesalahan atau kondisi tak terduga dalam kode
+                    catch (Exception) { throw; }
                 }
             }
             return status;
         }
-        //memeriksa apakah sebuah nama pengguna (username) sudah ada atau sudah terdaftar di dalam sistem
+
+        // FUNGSI 2: CEK USERNAME KEMBAR (SUDAH DISINKRONKAN KE TABEL 'users')
         public bool CekUsernameTerdaftar(string user)
         {
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
-                // membuka koneksi ke database menggunakan objek MySqlConnection yang diperoleh dari metode Koneksi.Getkoneksi()
-                conn.Open();
-                string query = "SELECT COUNT(*) FROM user WHERE username = @user";
+                // PERBAIKAN: Nama tabel diubah dari 'user' menjadi 'users' sesuai dengan database MySQL Anda
+                string query = "SELECT COUNT(*) FROM users WHERE username = @user";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@user", user);
-                    conn.Open();
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    // executescalar perintah yang digunakan untuk menjalankan query SQL dan hanya mengambil satu nilai saja pada baris pertama dan kolom pertama dari hasil query.
 
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
                 }
             }
         }
 
+        // FUNGSI 3: REGISTRASI USER BARU (SUDAH PAS KE TABEL 'users')
         public bool Registrasiuserbaru()
         {
             using (MySqlConnection conn = Koneksi.Getkoneksi())
@@ -85,13 +91,17 @@ namespace Aplikasi
                     cmd.Parameters.AddWithValue("@user", this.Username);
                     cmd.Parameters.AddWithValue("@pass", this.Password);
                     cmd.Parameters.AddWithValue("@role", this.Role);
-                    conn.Open();
+
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
-
             }
-
         }
     }
+
 }
+

@@ -34,9 +34,10 @@
             // 
             // ppcStruk
             // 
-            this.ppcStruk.Location = new System.Drawing.Point(3, 2);
+            this.ppcStruk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ppcStruk.Location = new System.Drawing.Point(0, 0);
             this.ppcStruk.Name = "ppcStruk";
-            this.ppcStruk.Size = new System.Drawing.Size(313, 480);
+            this.ppcStruk.Size = new System.Drawing.Size(328, 494);
             this.ppcStruk.TabIndex = 0;
             // 
             // printDialog1

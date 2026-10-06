@@ -42,6 +42,7 @@
             this.btnLogout.TabIndex = 7;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnMenuTransaksi
             // 
@@ -51,6 +52,7 @@
             this.btnMenuTransaksi.TabIndex = 6;
             this.btnMenuTransaksi.Text = "Transaksi";
             this.btnMenuTransaksi.UseVisualStyleBackColor = true;
+            this.btnMenuTransaksi.Click += new System.EventHandler(this.btnMenuTransaksi_Click);
             // 
             // lblSelamatDatang
             // 
@@ -86,7 +88,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDashboardKasir";
             this.Text = "FormDashboardKasir";
-            this.Load += new System.EventHandler(this.FormDashboardKasir_Load_1);
+            this.Load += new System.EventHandler(this.FormDashboardKasir_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

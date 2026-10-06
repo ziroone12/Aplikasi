@@ -70,6 +70,7 @@
             this.btnKembaliDashboard.TabIndex = 38;
             this.btnKembaliDashboard.Text = "Dashboard";
             this.btnKembaliDashboard.UseVisualStyleBackColor = true;
+            this.btnKembaliDashboard.Click += new System.EventHandler(this.btnKembaliDashboard_Click);
             // 
             // btnBayar
             // 
@@ -79,6 +80,7 @@
             this.btnBayar.TabIndex = 37;
             this.btnBayar.Text = "Bayar";
             this.btnBayar.UseVisualStyleBackColor = true;
+            this.btnBayar.Click += new System.EventHandler(this.btnBayar_Click);
             // 
             // btnTambahKeranjang
             // 
@@ -88,6 +90,7 @@
             this.btnTambahKeranjang.TabIndex = 36;
             this.btnTambahKeranjang.Text = "Tambah";
             this.btnTambahKeranjang.UseVisualStyleBackColor = true;
+            this.btnTambahKeranjang.Click += new System.EventHandler(this.btnTambahKeranjang_Click);
             // 
             // btnCari
             // 
@@ -97,6 +100,7 @@
             this.btnCari.TabIndex = 35;
             this.btnCari.Text = "Cari";
             this.btnCari.UseVisualStyleBackColor = true;
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
             // lblTotalHarga
             // 
@@ -252,7 +256,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormTransaksiPenjualan";
             this.Text = "FormTransaksiPenjualan";
-            this.Load += new System.EventHandler(this.FormTransaksiPenjualan_Load_1);
+            this.Load += new System.EventHandler(this.FormTransaksiPenjualan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKeranjang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

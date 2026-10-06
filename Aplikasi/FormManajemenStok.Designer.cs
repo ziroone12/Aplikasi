@@ -71,6 +71,7 @@
             this.dgvStokGudang.RowTemplate.Height = 28;
             this.dgvStokGudang.Size = new System.Drawing.Size(1743, 484);
             this.dgvStokGudang.TabIndex = 27;
+            this.dgvStokGudang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStokGudang_CellContentClick);
             this.dgvStokGudang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStokGudang_CellContentClick);
             // 
             // btnSimpanStok

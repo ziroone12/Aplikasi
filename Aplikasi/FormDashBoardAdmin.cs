@@ -71,12 +71,5 @@ namespace Aplikasi
             // Menutup total seluruh background process aplikasi saat tombol X silang ditekan langsung
             Application.Exit();
         }
-
-    
-
-        private void FormDashBoardAdmin_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

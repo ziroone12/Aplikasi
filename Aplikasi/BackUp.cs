@@ -66,9 +66,7 @@ namespace Aplikasi
 
         private void FormBackupRestore_Load(object sender, EventArgs e)
         {
-            label1.Visible = false;
-            label8.Visible = false;
-            label2.BackColor = Color.Transparent;
+            
         }
     
 
@@ -78,6 +76,11 @@ namespace Aplikasi
         }
 
         private void BackUp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

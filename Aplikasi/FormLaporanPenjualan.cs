@@ -69,10 +69,5 @@ namespace Aplikasi
             label2.BackColor = Color.Transparent;
             label3.BackColor = Color.Transparent;
         }
-
-        private void FormLaporanPenjualan_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -246,10 +246,5 @@ namespace Aplikasi
             label6.BackColor = Color.Transparent;
             lblStok.BackColor = Color.Transparent;
         }
-
-        private void FormTransaksiPenjualan_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

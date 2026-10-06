@@ -40,7 +40,15 @@ namespace Aplikasi
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Membersihkan sisa rekor memori jejak riwayat variabel sesi login global
+            Program.IDUserAktif = 0;
+            Program.UsernameAktif = "";
 
+            MessageBox.Show("Sesi dikeluarkan secara aman.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide(); // Menyembunyikan jendela dasbor admin
+
+            Form1 login = new Form1();
+            login.Show(); // Menampilkan ulang gerbang pintu form login orisinil mula-mula
         }
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
         {

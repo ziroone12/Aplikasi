@@ -180,11 +180,6 @@ namespace Aplikasi
             // Menutup total seluruh background process aplikasi saat tombol X silang ditekan langsung
             Application.Exit();
         }
-
-        private void FormManajemenBuku_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 

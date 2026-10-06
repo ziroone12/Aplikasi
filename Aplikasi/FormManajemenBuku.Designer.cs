@@ -71,6 +71,7 @@
             this.btnKembaliDashboard.TabIndex = 38;
             this.btnKembaliDashboard.Text = "Dashboard";
             this.btnKembaliDashboard.UseVisualStyleBackColor = true;
+            this.btnKembaliDashboard.Click += new System.EventHandler(this.btnKembaliDashboard_Click);
             // 
             // dgvBuku
             // 
@@ -81,6 +82,7 @@
             this.dgvBuku.RowTemplate.Height = 28;
             this.dgvBuku.Size = new System.Drawing.Size(1738, 387);
             this.dgvBuku.TabIndex = 37;
+            this.dgvBuku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuku_CellClick);
             // 
             // btnTambah
             // 
@@ -90,6 +92,7 @@
             this.btnTambah.TabIndex = 36;
             this.btnTambah.Text = "Tambah";
             this.btnTambah.UseVisualStyleBackColor = true;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // btnBersih
             // 
@@ -99,6 +102,7 @@
             this.btnBersih.TabIndex = 35;
             this.btnBersih.Text = "Bersih";
             this.btnBersih.UseVisualStyleBackColor = true;
+            this.btnBersih.Click += new System.EventHandler(this.btnBersih_Click);
             // 
             // btnHapus
             // 
@@ -108,6 +112,7 @@
             this.btnHapus.TabIndex = 34;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnEdit
             // 
@@ -117,6 +122,7 @@
             this.btnEdit.TabIndex = 33;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // txtStok
             // 
@@ -255,7 +261,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormManajemenBuku";
             this.Text = "FormManajemenBuku";
-            this.Load += new System.EventHandler(this.FormManajemenBuku_Load_1);
+            this.Load += new System.EventHandler(this.FormManajemenBuku_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuku)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
