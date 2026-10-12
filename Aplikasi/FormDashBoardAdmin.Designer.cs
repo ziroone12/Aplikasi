@@ -45,7 +45,7 @@
             this.lblSelamatDatang.AutoSize = true;
             this.lblSelamatDatang.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelamatDatang.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Assertive;
-            this.lblSelamatDatang.Location = new System.Drawing.Point(150, 46);
+            this.lblSelamatDatang.Location = new System.Drawing.Point(204, 63);
             this.lblSelamatDatang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelamatDatang.Name = "lblSelamatDatang";
             this.lblSelamatDatang.Size = new System.Drawing.Size(232, 27);
