@@ -83,6 +83,7 @@
             this.btnLanjut.TabIndex = 4;
             this.btnLanjut.Text = "Lanjut";
             this.btnLanjut.UseVisualStyleBackColor = true;
+            this.btnLanjut.Click += new System.EventHandler(this.btnLanjut_Click);
             // 
             // FormBilingPayment
             // 
@@ -97,6 +98,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormBilingPayment";
             this.Text = "FormBilingPayment";
+            this.Load += new System.EventHandler(this.FormBillingPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

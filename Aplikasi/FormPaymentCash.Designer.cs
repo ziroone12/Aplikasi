@@ -35,6 +35,7 @@
             this.lblKembalian = new System.Windows.Forms.Label();
             this.txtUangMasuk = new System.Windows.Forms.TextBox();
             this.btnSelesaiCash = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,19 +92,30 @@
             // 
             // btnSelesaiCash
             // 
-            this.btnSelesaiCash.Location = new System.Drawing.Point(16, 172);
+            this.btnSelesaiCash.Location = new System.Drawing.Point(154, 182);
             this.btnSelesaiCash.Name = "btnSelesaiCash";
-            this.btnSelesaiCash.Size = new System.Drawing.Size(210, 29);
+            this.btnSelesaiCash.Size = new System.Drawing.Size(123, 29);
             this.btnSelesaiCash.TabIndex = 6;
             this.btnSelesaiCash.Text = "Selesai";
             this.btnSelesaiCash.UseVisualStyleBackColor = true;
             this.btnSelesaiCash.Click += new System.EventHandler(this.btnSelesaiCash_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 29);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Count";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnHitung_Click);
             // 
             // FormPaymentCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 223);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSelesaiCash);
             this.Controls.Add(this.txtUangMasuk);
             this.Controls.Add(this.lblKembalian);
@@ -113,6 +125,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormPaymentCash";
             this.Text = "FormPaymentCash";
+            this.Load += new System.EventHandler(this.FormPaymentCash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +140,6 @@
         private System.Windows.Forms.Label lblKembalian;
         private System.Windows.Forms.TextBox txtUangMasuk;
         private System.Windows.Forms.Button btnSelesaiCash;
+        private System.Windows.Forms.Button button1;
     }
 }

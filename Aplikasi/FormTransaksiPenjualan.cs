@@ -21,7 +21,6 @@ namespace Aplikasi
             InitializeComponent();
             InisialisasiKeranjang();
             BuatTombolAksiPerBaris();
-            dgvKeranjang.CellContentClick += dgvKeranjang_CellContentClick;
             cmbCariBuku.TextUpdate += cmbCariBuku_TextUpdate;
 
 
@@ -71,7 +70,7 @@ namespace Aplikasi
         private void cmbCariBuku_TextUpdate(object sender, EventArgs e)
         {
             string keyword = cmbCariBuku.Text.Trim();
-            if (keyword.Length < 2) return;
+            if (keyword.Length < 1) return;
 
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
@@ -156,7 +155,6 @@ namespace Aplikasi
 
         private void SimpanTransaksiKeDatabase(FormBilingPayment frmBilling)
         {
-
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
@@ -164,14 +162,13 @@ namespace Aplikasi
                 {
                     try
                     {
-                        
                         string qTrans = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @user); SELECT LAST_INSERT_ID();";
                         int idNota = 0;
                         using (MySqlCommand cmd = new MySqlCommand(qTrans, conn, trans))
                         {
                             cmd.Parameters.AddWithValue("@total", grandtotal);
                             cmd.Parameters.AddWithValue("@user", Program.IDUserAktif);
-                            idNota = Convert.ToInt32(cmd.ExecuteScalar()); 
+                            idNota = Convert.ToInt32(cmd.ExecuteScalar());
                         }
 
                         // 2. LOOPING ISI KERANJANG UNTUK MEMASUKKAN DETAIL ITEM & MEMOTONG STOK GUDANG
@@ -201,19 +198,20 @@ namespace Aplikasi
                         // Nyatakan seluruh rangkaian penulisan data ke database sukses
                         trans.Commit();
 
-                        
+   
                         string metodeBayar = frmBilling.MetodeDipilih;
-                        decimal uangTunai = grandtotal;
+                        decimal uangTunai = grandtotal; // Nilai bawaan default jika non-tunai
 
                         if (metodeBayar == "CASH")
                         {
-                            // Mengambil data uang tunai riil yang disimpan di form billing
-                            uangTunai = grandtotal;
+                            // Mengambil nilai riil uang fisik dari properti Form Billing 
+                            uangTunai = frmBilling.UangDiterima;
                         }
 
+                        // Sekarang rumus kalkulasi matematika ini dijamin lurus dan akurat menghasilkan angka 
                         decimal kembalian = uangTunai - grandtotal;
 
-                        // Memanggil Formstruk dengan parameter lengkap dan seimbang
+                        // Memanggil Formstruk dengan parameter lengkap, seimbang, dan jujur
                         Formstruk frmStruk = new Formstruk(idNota.ToString(), Program.UsernameAktif, grandtotal, dtKeranjang, uangTunai, kembalian, metodeBayar);
                         frmStruk.ShowDialog();
 
@@ -228,6 +226,8 @@ namespace Aplikasi
                     }
                 }
             }
+
+
         }
 
 
