@@ -141,10 +141,13 @@ namespace Aplikasi
                 return;
             }
 
-            using (MySqlConnection conn = Koneksi.Getkoneksi())
+            // GANTI total baris using koneksi di file FromLogin.cs Anda menjadi string IP murni ini:
+            using (MySqlConnection conn = new MySqlConnection("server=127.0.0.1;port=3306;username=root;password=;database=db_tokobuku;"))
             {
-                if (conn.State == ConnectionState.Closed) conn.Open();
+                if (conn.State == ConnectionState.Closed) conn.Open(); // <-- Baris 146 dijamin lolos lunas!
+
                 string query = "SELECT id_user, username, role FROM users WHERE username = @user AND password = @pass AND role = @role";
+                
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim());

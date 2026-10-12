@@ -16,106 +16,168 @@ namespace Aplikasi
         public FormDashBoardAdmin()
         {
             InitializeComponent();
+            this.IsMdiContainer = true;
+            this.FormClosing += new FormClosingEventHandler(Form_FormClosing);
+
+        }
+        private void SembunyikanSemuaFormAnak()
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Hide(); // Sembunyikan (Hide) secara halus dari monitor
+            }
         }
         private void FormDashboardAdmin_Load1(object sender, EventArgs e)
         {
-            // Menampilkan informasi nama akun admin yang sedang login pada StatusStrip bawah
-            lblStatusAdmin.Text = "Sesi Aktif: Admin - " + Program.UsernameAktif;
+            dashadmin frmAudit = new dashadmin();
+            frmAudit.MdiParent = this; // Kunci ke dalam bingkai kontainer dashboard admin harian
+            frmAudit.FormBorderStyle = FormBorderStyle.None; // Hancurkan baris judul & tombol silang Windows
+            frmAudit.WindowState = FormWindowState.Maximized; // Paksa melar 100% penuh satu layar monitor
+            frmAudit.Show();
         }
 
         // Event untuk membuka menu Management Master Buku
         private void menuManagementBuku_Click(object sender, EventArgs e)
         {
-            // PROSES CEK DUPLIKASI: Jika form manajemen buku sudah terbuka, fokuskan saja ke depan layar
+            SembunyikanSemuaFormAnak();
+
             foreach (Form child in this.MdiChildren)
             {
                 if (child is FormManajemenBuku)
                 {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    child.Show(); // Munculkan kembali ke monitor
                     child.Activate();
                     return;
                 }
             }
 
-            // Jika belum terbuka, buat instansiasi form anak baru
+            // Jika belum ada, buat instansiasi form anak baru
             FormManajemenBuku frmBuku = new FormManajemenBuku();
-            frmBuku.MdiParent = this; // KUNCI UTAMA: Mengunci form anak di dalam bingkai MDI Admin
-            frmBuku.Show(); // Tampilkan form di dalam area kerja abu-abu admin
+            frmBuku.MdiParent = this;
+            frmBuku.FormBorderStyle = FormBorderStyle.None; // Hilangkan baris judul/tombol silang
+            frmBuku.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+            frmBuku.Show();
         }
 
         // Event untuk membuka menu Management Stok Gudang (Restock)
         private void menuManagementStok_Click(object sender, EventArgs e)
         {
+            SembunyikanSemuaFormAnak();
+
             foreach (Form child in this.MdiChildren)
             {
                 if (child is FormManajemenStok)
                 {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    child.Show(); // Munculkan kembali ke monitor
                     child.Activate();
                     return;
                 }
             }
 
             FormManajemenStok frmStok = new FormManajemenStok();
-            frmStok.MdiParent = this; // KUNCI UTAMA: Mengunci form anak di dalam bingkai MDI Admin
+            frmStok.MdiParent = this;
+            frmStok.FormBorderStyle = FormBorderStyle.None; // Hilangkan baris judul/tombol silang
+            frmStok.WindowState = FormWindowState.Maximized; // Paksa melar penuh
             frmStok.Show();
         }
-
-        // Event untuk membuka Sub-Menu Drop-down: Riwayat Laporan Penjualan
         private void subMenuLaporan_Click(object sender, EventArgs e)
         {
-            // SINKRONISASI BARU: Membuka FormLaporanPenjualan yang baru ditambahkan secara rapi
+            SembunyikanSemuaFormAnak();
+
             foreach (Form child in this.MdiChildren)
             {
                 if (child is FormLaporanPenjualan)
                 {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    child.Show(); // Munculkan kembali ke monitor
                     child.Activate();
                     return;
                 }
             }
 
             FormLaporanPenjualan frmLaporan = new FormLaporanPenjualan();
-            frmLaporan.MdiParent = this; // KUNCI UTAMA: Mengunci form laporan di dalam MDI Admin
+            frmLaporan.MdiParent = this;
+            frmLaporan.FormBorderStyle = FormBorderStyle.None; // Hilangkan baris judul/tombol silang
+            frmLaporan.WindowState = FormWindowState.Maximized; // Paksa melar penuh
             frmLaporan.Show();
         }
 
         // Event untuk membuka Sub-Menu Drop-down: Refund Transaksi / Pembatalan Nota
         private void subMenuRefund_Click(object sender, EventArgs e)
         {
-            // REVISI MODULAR: Modul refund sukses menyatu di dalam satu rumpun administrasi laporan admin
+            SembunyikanSemuaFormAnak();
+
             foreach (Form child in this.MdiChildren)
             {
                 if (child is FormRefundTransaksi)
                 {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    child.Show(); // Munculkan kembali ke monitor
                     child.Activate();
                     return;
                 }
             }
 
             FormRefundTransaksi frmRefund = new FormRefundTransaksi();
-            frmRefund.MdiParent = this; // KUNCI UTAMA: Mengunci form refund di dalam MDI Admin
+            frmRefund.MdiParent = this;
+            frmRefund.FormBorderStyle = FormBorderStyle.None; // Hilangkan baris judul/tombol silang
+            frmRefund.WindowState = FormWindowState.Maximized; // Paksa melar penuh
             frmRefund.Show();
         }
 
         // Event untuk membuka menu Backup & Pemulihan Basis Data
         private void menuBackup_Click(object sender, EventArgs e)
         {
+            SembunyikanSemuaFormAnak();
+
             foreach (Form child in this.MdiChildren)
             {
                 if (child is BackUp)
                 {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    child.Show(); // Munculkan kembali ke monitor
                     child.Activate();
                     return;
                 }
             }
 
             BackUp frmBackup = new BackUp();
-            frmBackup.MdiParent = this; // KUNCI UTAMA: Mengunci form backup di dalam MDI Admin
+            frmBackup.MdiParent = this;
+            frmBackup.FormBorderStyle = FormBorderStyle.None; // Hilangkan baris judul/tombol silang
+            frmBackup.WindowState = FormWindowState.Maximized; // Paksa melar penuh
             frmBackup.Show();
+        }
+        private void menuLogAudit_Click(object sender, EventArgs e)
+        {
+            // 1. Bersihkan layar dari form anak yang terbuka sebelumnya (Auto-Hide)
+            SembunyikanSemuaFormAnak();
+
+            // 2. Cek apakah form log audit sudah pernah dibuat di memori RAM
+            foreach (Form child in this.MdiChildren)
+            {
+                if (child is dashadmin)
+                {
+                    child.WindowState = FormWindowState.Maximized; // Paksa melar penuh
+                    ((dashadmin)child).MuatSeluruhRiwayatSistemToko(); // Segarkan data terbaru
+                    child.Show(); // Munculkan kembali ke monitor
+                    child.Activate();
+                    return;
+                }
+            }
+
+            // Jika belum ada, lahirkan form anak audit baru tertanam paten seutuhnya
+            dashadmin frmAudit = new dashadmin();
+            frmAudit.MdiParent = this; // Kunci ke dalam bingkai kontainer dashboard admin harian
+            frmAudit.FormBorderStyle = FormBorderStyle.None; // Hancurkan baris judul & tombol silang Windows
+            frmAudit.WindowState = FormWindowState.Maximized; // Paksa melar 100% penuh satu layar monitor
+            frmAudit.Show();
         }
 
         // Event untuk memproses pengeluaran akun secara aman (Secure Logout)
         private void menuLogout_Click(object sender, EventArgs e)
         {
-            // Membersihkan sisa variabel sesi RAM global agar steril
             Program.IDUserAktif = 0;
             Program.UsernameAktif = "";
             Program.RoleAktif = "";
@@ -140,9 +202,7 @@ namespace Aplikasi
     
         private void FormDashboardAdmin_Load(object sender, EventArgs e)
         {
-            // Mengubah kalimat sambutan teks label dengan mengambil variabel sesi nama user aktif global
-            lblSelamatDatang.Text = "Selamat Datang, " + Program.UsernameAktif + "!";
-            lblSelamatDatang.BackColor = Color.Transparent;
+           
         }
 
         // Aksi tombol logout keluar aman sistem aplikasi kasir toko buku
@@ -153,5 +213,7 @@ namespace Aplikasi
             // Menutup total seluruh background process aplikasi saat tombol X silang ditekan langsung
             Application.Exit();
         }
+
+        
     }
 }

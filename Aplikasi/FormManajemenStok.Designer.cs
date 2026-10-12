@@ -81,7 +81,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Aplikasi.Properties.Resources._6;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1735, 695);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.textSimpanStok);
             this.Controls.Add(this.label1);

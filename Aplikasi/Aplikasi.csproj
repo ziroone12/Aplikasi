@@ -105,6 +105,12 @@
     <Compile Include="dashadmin.Designer.cs">
       <DependentUpon>dashadmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="dashkasir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dashkasir.Designer.cs">
+      <DependentUpon>dashkasir.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBilingPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,12 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="BackUp.resx">
       <DependentUpon>BackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dashadmin.resx">
+      <DependentUpon>dashadmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dashkasir.resx">
+      <DependentUpon>dashkasir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBilingPayment.resx">
       <DependentUpon>FormBilingPayment.cs</DependentUpon>

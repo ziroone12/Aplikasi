@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblSelamatDatang = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manegemenBukuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menagemenStokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,23 +35,9 @@
             this.riwayatLaporanPenjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refundTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblStatusAdmin = new System.Windows.Forms.Label();
             this.logOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblSelamatDatang
-            // 
-            this.lblSelamatDatang.AutoSize = true;
-            this.lblSelamatDatang.BackColor = System.Drawing.Color.Transparent;
-            this.lblSelamatDatang.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelamatDatang.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Assertive;
-            this.lblSelamatDatang.Location = new System.Drawing.Point(12, 45);
-            this.lblSelamatDatang.Name = "lblSelamatDatang";
-            this.lblSelamatDatang.Size = new System.Drawing.Size(345, 41);
-            this.lblSelamatDatang.TabIndex = 8;
-            this.lblSelamatDatang.Text = "lblSelamatDatang";
             // 
             // menuStrip1
             // 
@@ -66,7 +51,7 @@
             this.logOutToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1281, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1735, 33);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -112,28 +97,7 @@
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
             this.logOutToolStripMenuItem.Text = "Dashboard";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(23, 627);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Status Aktif";
-            // 
-            // lblStatusAdmin
-            // 
-            this.lblStatusAdmin.AutoSize = true;
-            this.lblStatusAdmin.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatusAdmin.Location = new System.Drawing.Point(137, 627);
-            this.lblStatusAdmin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStatusAdmin.Name = "lblStatusAdmin";
-            this.lblStatusAdmin.Size = new System.Drawing.Size(92, 20);
-            this.lblStatusAdmin.TabIndex = 11;
-            this.lblStatusAdmin.Text = "Status Aktif";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.menuLogAudit_Click);
             // 
             // logOutToolStripMenuItem1
             // 
@@ -148,10 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Aplikasi.Properties.Resources.Screenshot_2026_09_27_143314;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1281, 665);
-            this.Controls.Add(this.lblStatusAdmin);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblSelamatDatang);
+            this.ClientSize = new System.Drawing.Size(1735, 695);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
@@ -159,7 +120,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDashBoardAdmin";
             this.Text = "FormDashBoardAdmin";
-            this.Load += new System.EventHandler(this.FormDashboardAdmin_Load);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormDashboardAdmin_Load1);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -168,7 +130,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblSelamatDatang;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manegemenBukuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menagemenStokToolStripMenuItem;
@@ -176,8 +137,6 @@
         private System.Windows.Forms.ToolStripMenuItem riwayatLaporanPenjualanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refundTransaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblStatusAdmin;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem1;
     }
 }

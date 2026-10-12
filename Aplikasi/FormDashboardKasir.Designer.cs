@@ -34,6 +34,7 @@
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblStatusKasir = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,10 +53,11 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manegemenBukuToolStripMenuItem,
-            this.logOutToolStripMenuItem});
+            this.logOutToolStripMenuItem,
+            this.dashboardToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(607, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(607, 36);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,12 +66,14 @@
             this.manegemenBukuToolStripMenuItem.Name = "manegemenBukuToolStripMenuItem";
             this.manegemenBukuToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.manegemenBukuToolStripMenuItem.Text = "Transaksi";
+            this.manegemenBukuToolStripMenuItem.Click += new System.EventHandler(this.menuTransaksiPOS_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(90, 29);
             this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.menuLogout_Click);
             // 
             // lblStatusKasir
             // 
@@ -93,6 +97,13 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Status Aktif";
             // 
+            // dashboardToolStripMenuItem
+            // 
+            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
+            this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.menuRiwayatPasokan_Click);
+            // 
             // FormDashboardKasir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -104,6 +115,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblSelamatDatang);
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDashboardKasir";
             this.Text = "FormDashboardKasir";
@@ -122,5 +134,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Label lblStatusKasir;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
     }
 }

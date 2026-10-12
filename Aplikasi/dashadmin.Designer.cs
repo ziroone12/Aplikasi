@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvRiwayatSistem = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatSistem)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvRiwayatSistem
+            // 
+            this.dgvRiwayatSistem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRiwayatSistem.Location = new System.Drawing.Point(38, 238);
+            this.dgvRiwayatSistem.Name = "dgvRiwayatSistem";
+            this.dgvRiwayatSistem.RowHeadersWidth = 62;
+            this.dgvRiwayatSistem.RowTemplate.Height = 28;
+            this.dgvRiwayatSistem.Size = new System.Drawing.Size(1669, 504);
+            this.dgvRiwayatSistem.TabIndex = 0;
+            // 
+            // dashadmin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1822, 780);
+            this.Controls.Add(this.dgvRiwayatSistem);
+            this.Name = "dashadmin";
             this.Text = "dashadmin";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatSistem)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvRiwayatSistem;
     }
 }
