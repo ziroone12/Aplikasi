@@ -12,7 +12,7 @@ namespace Aplikasi
 {
     public partial class FormPaymentCash : Form
     {
-        public decimal NominalUangMasuk { get; set; }
+        public decimal NominalUangMasuk { get; set; }    
         public decimal TotalTagihan { get; set; }
         private bool sudahDihitung = false;
         public FormPaymentCash()
