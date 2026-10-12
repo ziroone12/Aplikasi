@@ -41,7 +41,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manegemenBukuToolStripMenuItem,
@@ -51,21 +50,22 @@
             this.logOutToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1735, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(913, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // manegemenBukuToolStripMenuItem
             // 
             this.manegemenBukuToolStripMenuItem.Name = "manegemenBukuToolStripMenuItem";
-            this.manegemenBukuToolStripMenuItem.Size = new System.Drawing.Size(171, 29);
+            this.manegemenBukuToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.manegemenBukuToolStripMenuItem.Text = "Manegemen Buku";
             this.manegemenBukuToolStripMenuItem.Click += new System.EventHandler(this.menuManagementBuku_Click);
             // 
             // menagemenStokToolStripMenuItem
             // 
             this.menagemenStokToolStripMenuItem.Name = "menagemenStokToolStripMenuItem";
-            this.menagemenStokToolStripMenuItem.Size = new System.Drawing.Size(167, 29);
+            this.menagemenStokToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.menagemenStokToolStripMenuItem.Text = "Menagemen Stok";
             this.menagemenStokToolStripMenuItem.Click += new System.EventHandler(this.menuManagementStok_Click);
             // 
@@ -75,49 +75,48 @@
             this.riwayatLaporanPenjualanToolStripMenuItem,
             this.refundTransaksiToolStripMenuItem});
             this.laporanPenjualanToolStripMenuItem.Name = "laporanPenjualanToolStripMenuItem";
-            this.laporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(171, 29);
+            this.laporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.laporanPenjualanToolStripMenuItem.Text = "Laporan Penjualan";
             // 
             // riwayatLaporanPenjualanToolStripMenuItem
             // 
             this.riwayatLaporanPenjualanToolStripMenuItem.Name = "riwayatLaporanPenjualanToolStripMenuItem";
-            this.riwayatLaporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(323, 34);
+            this.riwayatLaporanPenjualanToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.riwayatLaporanPenjualanToolStripMenuItem.Text = "Riwayat Laporan Penjualan";
             this.riwayatLaporanPenjualanToolStripMenuItem.Click += new System.EventHandler(this.subMenuLaporan_Click);
             // 
             // refundTransaksiToolStripMenuItem
             // 
             this.refundTransaksiToolStripMenuItem.Name = "refundTransaksiToolStripMenuItem";
-            this.refundTransaksiToolStripMenuItem.Size = new System.Drawing.Size(323, 34);
+            this.refundTransaksiToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.refundTransaksiToolStripMenuItem.Text = "Refund Transaksi";
             this.refundTransaksiToolStripMenuItem.Click += new System.EventHandler(this.subMenuRefund_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(116, 29);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(76, 22);
             this.logOutToolStripMenuItem.Text = "Dashboard";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.menuLogAudit_Click);
             // 
             // logOutToolStripMenuItem1
             // 
             this.logOutToolStripMenuItem1.Name = "logOutToolStripMenuItem1";
-            this.logOutToolStripMenuItem1.Size = new System.Drawing.Size(88, 29);
+            this.logOutToolStripMenuItem1.Size = new System.Drawing.Size(59, 22);
             this.logOutToolStripMenuItem1.Text = "LogOut";
             this.logOutToolStripMenuItem1.Click += new System.EventHandler(this.menuLogout_Click);
             // 
             // FormDashBoardAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Aplikasi.Properties.Resources.Screenshot_2026_09_27_143314;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1735, 695);
+            this.ClientSize = new System.Drawing.Size(913, 452);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormDashBoardAdmin";
             this.Text = "FormDashBoardAdmin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
