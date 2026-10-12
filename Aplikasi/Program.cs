@@ -10,15 +10,26 @@ namespace Aplikasi
     {
         public static int IDUserAktif = 0;
         public static string UsernameAktif = "";
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        public static string RoleAktif = "";
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Form1 frmLogin = new Form1();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                if (Program.RoleAktif == "admin")
+                {
+                    Application.Run(new FormDashBoardAdmin());
+                }
+                else
+                {
+                    Application.Run(new FormDashboardKasir());
+                }
+            }
         }
     }
 }

@@ -9,12 +9,9 @@ namespace Aplikasi
 {
     public class Koneksi
     {
-        //untuk ngekonekin ke database nyaaa
-        public static string connectionString = "server=localhost;username=root;port=3306;database=db_tokobuku";
-
+        private static string connectionString = "server=localhost;port=3306;username=root;password=;database=db_tokobuku;";
         public static MySqlConnection Getkoneksi()
         {
-            //untuk menghubungkan program apk dengan server database
             return new MySqlConnection(connectionString);
         }
     }
