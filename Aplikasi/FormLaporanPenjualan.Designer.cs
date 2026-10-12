@@ -28,152 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnKembaliDashboard = new System.Windows.Forms.Button();
-            this.dgvLaporan = new System.Windows.Forms.DataGridView();
-            this.btnEkspor = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.dtpSelesai = new System.Windows.Forms.DateTimePicker();
-            this.dtpMulai = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaporan)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Agency FB", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(-104, 160);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(1041, 20);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "_________________________________________________________________________________" +
-    "________________________________________________________________________________" +
-    "___________";
-            // 
-            // btnKembaliDashboard
-            // 
-            this.btnKembaliDashboard.Location = new System.Drawing.Point(15, 123);
-            this.btnKembaliDashboard.Name = "btnKembaliDashboard";
-            this.btnKembaliDashboard.Size = new System.Drawing.Size(98, 35);
-            this.btnKembaliDashboard.TabIndex = 29;
-            this.btnKembaliDashboard.Text = "Dashboard";
-            this.btnKembaliDashboard.UseVisualStyleBackColor = true;
-            this.btnKembaliDashboard.Click += new System.EventHandler(this.btnKembaliDashboard_Click);
-            // 
-            // dgvLaporan
-            // 
-            this.dgvLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLaporan.Location = new System.Drawing.Point(15, 334);
-            this.dgvLaporan.Name = "dgvLaporan";
-            this.dgvLaporan.RowHeadersWidth = 62;
-            this.dgvLaporan.RowTemplate.Height = 28;
-            this.dgvLaporan.Size = new System.Drawing.Size(1716, 285);
-            this.dgvLaporan.TabIndex = 28;
-            // 
-            // btnEkspor
-            // 
-            this.btnEkspor.Location = new System.Drawing.Point(15, 626);
-            this.btnEkspor.Name = "btnEkspor";
-            this.btnEkspor.Size = new System.Drawing.Size(111, 35);
-            this.btnEkspor.TabIndex = 27;
-            this.btnEkspor.Text = "Ekspor";
-            this.btnEkspor.UseVisualStyleBackColor = true;
-            this.btnEkspor.Click += new System.EventHandler(this.btnEkspor_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(22, 294);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(111, 35);
-            this.btnFilter.TabIndex = 26;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // dtpSelesai
-            // 
-            this.dtpSelesai.Location = new System.Drawing.Point(430, 251);
-            this.dtpSelesai.Name = "dtpSelesai";
-            this.dtpSelesai.Size = new System.Drawing.Size(154, 26);
-            this.dtpSelesai.TabIndex = 25;
-            // 
-            // dtpMulai
-            // 
-            this.dtpMulai.Location = new System.Drawing.Point(135, 249);
-            this.dtpMulai.Name = "dtpMulai";
-            this.dtpMulai.Size = new System.Drawing.Size(154, 26);
-            this.dtpMulai.TabIndex = 24;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(296, 252);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 20);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Sampai Tanggal:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 252);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 20);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Mulai Tanggal:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(178, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 54);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "LAPORAN PENJUALAN";
             // 
             // FormLaporanPenjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Aplikasi.Properties.Resources._7;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1743, 692);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnKembaliDashboard);
-            this.Controls.Add(this.dgvLaporan);
-            this.Controls.Add(this.btnEkspor);
-            this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.dtpSelesai);
-            this.Controls.Add(this.dtpMulai);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormLaporanPenjualan";
             this.Text = "FormLaporanPenjualan";
             this.Load += new System.EventHandler(this.FormLaporanPenjualan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLaporan)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnKembaliDashboard;
-        private System.Windows.Forms.DataGridView dgvLaporan;
-        private System.Windows.Forms.Button btnEkspor;
-        private System.Windows.Forms.Button btnFilter;
-        private System.Windows.Forms.DateTimePicker dtpSelesai;
-        private System.Windows.Forms.DateTimePicker dtpMulai;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }
