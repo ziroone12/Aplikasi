@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Aplikasi
 {
     public partial class FormBilingPayment : Form
     {
         public decimal TotalTagihanMaster { get; set; }
+        // TAMBAHAN PROPERTI GLOBAL FORM BILLING:
+        public string MetodeDipilih { get; set; } = "CASH";
+
         public FormBilingPayment()
         {
             InitializeComponent();
@@ -25,14 +29,15 @@ namespace Aplikasi
         private void btnLanjut_Click(object sender, EventArgs e)
         {
             if (cmbMetode.SelectedItem == null) return;
-            string metode = cmbMetode.SelectedItem.ToString().ToUpper();
+            // Simpan teks metode yang dipilih kasir (CASH/QRIS/TRANSFER) ke variabel global
+            MetodeDipilih = cmbMetode.SelectedItem.ToString().ToUpper();
 
-            if (metode == "CASH")
+            if (MetodeDipilih == "CASH")
             {
                 FormPaymentCash frmCash = new FormPaymentCash() { TotalTagihan = TotalTagihanMaster };
                 if (frmCash.ShowDialog() == DialogResult.OK) { this.DialogResult = DialogResult.OK; this.Close(); }
             }
-            else if (metode == "QRIS")
+            else if (MetodeDipilih == "QRIS")
             {
                 FormPaymentQRIS frmQRIS = new FormPaymentQRIS() { TotalTagihan = TotalTagihanMaster };
                 if (frmQRIS.ShowDialog() == DialogResult.OK) { this.DialogResult = DialogResult.OK; this.Close(); }
@@ -43,5 +48,6 @@ namespace Aplikasi
                 if (frmTransfer.ShowDialog() == DialogResult.OK) { this.DialogResult = DialogResult.OK; this.Close(); }
             }
         }
+
     }
 }

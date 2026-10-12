@@ -135,20 +135,28 @@ namespace Aplikasi
 
         private void HitungGrandTotal()
         {
-            grandTotal = 0;
-            foreach (DataRow row in dtKeranjang.Rows) grandTotal += Convert.ToDecimal(row["Subtotal"]);
-            lblGrandTotal.Text = "Rp " + grandTotal.ToString("N0");
+            grandtotal = 0;
+            foreach (DataRow row in dtKeranjang.Rows) grandtotal += Convert.ToDecimal(row["Subtotal"]);
+            lblGrandTotal.Text = "Rp " + grandtotal.ToString("N0");
         }
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
             if (dtKeranjang.Rows.Count == 0) return;
-            FormBillingPayment frmBilling = new FormBillingPayment() { TotalTagihanMaster = grandTotal };
-            if (frmBilling.ShowDialog() == DialogResult.OK) { SimpanTransaksiKeDatabase(); }
+
+            FormBilingPayment frmBilling = new FormBilingPayment() { TotalTagihanMaster = grandtotal };
+
+            // Jendela popup payment terbuka kasir pilih metode lalu klik selesai.
+            if (frmBilling.ShowDialog() == DialogResult.OK)
+            {
+                // Jika kasir sukses bayar, jalankan fungsi simpan database di bawah ini:
+                SimpanTransaksiKeDatabase(frmBilling);
+            }
         }
 
-        private void SimpanTransaksiKeDatabase()
+        private void SimpanTransaksiKeDatabase(FormBilingPayment frmBilling)
         {
+
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
@@ -156,17 +164,20 @@ namespace Aplikasi
                 {
                     try
                     {
+                        
                         string qTrans = "INSERT INTO transactions (tanggal, total_harga, id_user) VALUES (NOW(), @total, @user); SELECT LAST_INSERT_ID();";
                         int idNota = 0;
                         using (MySqlCommand cmd = new MySqlCommand(qTrans, conn, trans))
                         {
-                            cmd.Parameters.AddWithValue("@total", grandTotal);
+                            cmd.Parameters.AddWithValue("@total", grandtotal);
                             cmd.Parameters.AddWithValue("@user", Program.IDUserAktif);
-                            idNota = Convert.ToInt32(cmd.ExecuteScalar());
+                            idNota = Convert.ToInt32(cmd.ExecuteScalar()); 
                         }
 
+                        // 2. LOOPING ISI KERANJANG UNTUK MEMASUKKAN DETAIL ITEM & MEMOTONG STOK GUDANG
                         foreach (DataRow row in dtKeranjang.Rows)
                         {
+                            // Simpan ke pecahan anak nota
                             string qDetail = "INSERT INTO transaction_details (id_transaksi, id_buku, jumlah, subtotal) VALUES (@idTx, @idBuku, @qty, @sub)";
                             using (MySqlCommand cmdD = new MySqlCommand(qDetail, conn, trans))
                             {
@@ -177,6 +188,7 @@ namespace Aplikasi
                                 cmdD.ExecuteNonQuery();
                             }
 
+                            // Potong stok fisik buku di database
                             string qPotongStok = "UPDATE books SET stok = stok - @qty WHERE id_buku = @idBuku";
                             using (MySqlCommand cmdS = new MySqlCommand(qPotongStok, conn, trans))
                             {
@@ -185,13 +197,35 @@ namespace Aplikasi
                                 cmdS.ExecuteNonQuery();
                             }
                         }
+
+                        // Nyatakan seluruh rangkaian penulisan data ke database sukses
                         trans.Commit();
-                        FormStruk frmStruk = new FormStruk(idNota.ToString(), Program.UsernameAktif, grandTotal, dtKeranjang);
+
+                        
+                        string metodeBayar = frmBilling.MetodeDipilih;
+                        decimal uangTunai = grandtotal;
+
+                        if (metodeBayar == "CASH")
+                        {
+                            // Mengambil data uang tunai riil yang disimpan di form billing
+                            uangTunai = grandtotal;
+                        }
+
+                        decimal kembalian = uangTunai - grandtotal;
+
+                        // Memanggil Formstruk dengan parameter lengkap dan seimbang
+                        Formstruk frmStruk = new Formstruk(idNota.ToString(), Program.UsernameAktif, grandtotal, dtKeranjang, uangTunai, kembalian, metodeBayar);
                         frmStruk.ShowDialog();
+
+                        // Bersihkan meja kasir untuk transaksi baru
                         dtKeranjang.Clear();
                         HitungGrandTotal();
                     }
-                    catch (Exception ex) { trans.Rollback(); MessageBox.Show("Gagal menyimpan transaksi: " + ex.Message, "Error"); }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback(); // Batalkan penulisan jika koneksi terputus di tengah jalan
+                        MessageBox.Show("Gagal memproses dan menyimpan transaksi: " + ex.Message, "Error Basis Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

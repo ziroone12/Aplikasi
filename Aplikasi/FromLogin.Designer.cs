@@ -66,7 +66,7 @@
             this.btnDaftar.TabIndex = 16;
             this.btnDaftar.Text = "daftar";
             this.btnDaftar.UseVisualStyleBackColor = true;
-            this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click);
+            this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click1);
             // 
             // btnLogin
             // 
@@ -79,7 +79,7 @@
             this.btnLogin.TabIndex = 15;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click1);
             // 
             // txtPassword
             // 

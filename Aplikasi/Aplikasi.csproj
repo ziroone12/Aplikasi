@@ -48,8 +48,8 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=26.7.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.26.7.0\lib\net48\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\..\..\mysql-connector-net-9.0.0\v4.8\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -99,6 +99,12 @@
       <DependentUpon>BackUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Buku.cs" />
+    <Compile Include="dashadmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dashadmin.Designer.cs">
+      <DependentUpon>dashadmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBilingPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,30 @@
     </Compile>
     <Compile Include="FormDashboardKasir.Designer.cs">
       <DependentUpon>FormDashboardKasir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaymentCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPaymentCash.Designer.cs">
+      <DependentUpon>FormPaymentCash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaymentQRIS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPaymentQRIS.Designer.cs">
+      <DependentUpon>FormPaymentQRIS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaymentTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPaymentTransfer.Designer.cs">
+      <DependentUpon>FormPaymentTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRefundTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRefundTransaksi.Designer.cs">
+      <DependentUpon>FormRefundTransaksi.cs</DependentUpon>
     </Compile>
     <Compile Include="Formstruk.cs">
       <SubType>Form</SubType>
@@ -172,6 +202,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboardKasir.resx">
       <DependentUpon>FormDashboardKasir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPaymentCash.resx">
+      <DependentUpon>FormPaymentCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPaymentQRIS.resx">
+      <DependentUpon>FormPaymentQRIS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPaymentTransfer.resx">
+      <DependentUpon>FormPaymentTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRefundTransaksi.resx">
+      <DependentUpon>FormRefundTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formstruk.resx">
       <DependentUpon>Formstruk.cs</DependentUpon>

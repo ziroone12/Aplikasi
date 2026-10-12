@@ -38,57 +38,63 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 35);
+            this.label1.Location = new System.Drawing.Point(58, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 13);
+            this.label1.Size = new System.Drawing.Size(206, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "TOTAL TAGIHAN MASTER";
             // 
             // lblTotalMaster
             // 
             this.lblTotalMaster.AutoSize = true;
-            this.lblTotalMaster.Location = new System.Drawing.Point(220, 35);
+            this.lblTotalMaster.Location = new System.Drawing.Point(330, 54);
+            this.lblTotalMaster.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalMaster.Name = "lblTotalMaster";
-            this.lblTotalMaster.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalMaster.Size = new System.Drawing.Size(18, 20);
             this.lblTotalMaster.TabIndex = 1;
             this.lblTotalMaster.Text = "T";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 83);
+            this.label2.Location = new System.Drawing.Point(58, 128);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 13);
+            this.label2.Size = new System.Drawing.Size(188, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Pilih Metode Pembayaran";
             // 
             // cmbMetode
             // 
             this.cmbMetode.FormattingEnabled = true;
-            this.cmbMetode.Location = new System.Drawing.Point(208, 80);
+            this.cmbMetode.Location = new System.Drawing.Point(312, 123);
+            this.cmbMetode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbMetode.Name = "cmbMetode";
-            this.cmbMetode.Size = new System.Drawing.Size(121, 21);
+            this.cmbMetode.Size = new System.Drawing.Size(180, 28);
             this.cmbMetode.TabIndex = 3;
             // 
             // btnLanjut
             // 
-            this.btnLanjut.Location = new System.Drawing.Point(179, 169);
+            this.btnLanjut.Location = new System.Drawing.Point(62, 194);
+            this.btnLanjut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLanjut.Name = "btnLanjut";
-            this.btnLanjut.Size = new System.Drawing.Size(75, 23);
+            this.btnLanjut.Size = new System.Drawing.Size(112, 35);
             this.btnLanjut.TabIndex = 4;
             this.btnLanjut.Text = "Lanjut";
             this.btnLanjut.UseVisualStyleBackColor = true;
             // 
             // FormBilingPayment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 331);
+            this.ClientSize = new System.Drawing.Size(552, 288);
             this.Controls.Add(this.btnLanjut);
             this.Controls.Add(this.cmbMetode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalMaster);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormBilingPayment";
             this.Text = "FormBilingPayment";
             this.ResumeLayout(false);

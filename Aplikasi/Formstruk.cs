@@ -15,109 +15,82 @@ namespace Aplikasi
 {
     public partial class Formstruk : Form
     {
-        //Mendeklarasikan objek komponen mesin cetak bawaan Windows Forms
         private PrintDocument prntDoc = new PrintDocument();
-
-        //Variabel penampung kiriman data nota dari Form Transaksi
-        private string notaID;
-        private string namaKasir;
-        private decimal totalBiaya;
+        private string notaID, namaKasir, jenisMetode;
+        private decimal totalBiaya, tunaiDibayar, uangKembalian;
         private DataTable detailBelanja;
-        // Menerima operan data transaksi dari Form Sebelah pas objek struk ini dibuat
-        public Formstruk(string idNota, string kasir, decimal total, DataTable keranjang)
+        public Formstruk(string idnota, string kasir, decimal total, DataTable keranjang, decimal tunai, decimal kembali, string metode)
         {
             InitializeComponent();
-
-            // Memindahkan data operan masuk ke variabel internal form struk
-            this.notaID = idNota;
+            this.notaID = idnota;
             this.namaKasir = kasir;
             this.totalBiaya = total;
             this.detailBelanja = keranjang;
-            // 1. Mengunci ukuran kertas ke mode ramping 58mm (Sudah kita bahas sebelumnya)
+            this.tunaiDibayar = tunai;
+            this.uangKembalian = kembali;
+            this.jenisMetode = metode; // Menyimpan info metode (CASH/QRIS/TRANSFER)
+
+            // Kunci ukuran kertas melar ramping thermal standar kasir 58mm
             PaperSize ukuranKertasStruk = new PaperSize("StrukThermal58mm", 250, 600);
             prntDoc.DefaultPageSettings.PaperSize = ukuranKertasStruk;
 
             prntDoc.PrintPage += new PrintPageEventHandler(GambarlayoutStruk);
             ppcStruk.Document = prntDoc;
 
-            
-            // Mematikan sistem pengecilan otomatis bawaan Windows yang bikin tulisan ciut
             ppcStruk.AutoZoom = false;
-
-            // Mengeset skala perbesaran gambar kertas langsung ke ukuran 100persen 
             ppcStruk.Zoom = 1.0;
-            
-        
 
-        // Mengaitkan mesin cetak dengan Event Handler proses penggambaran teks struk
-        prntDoc.PrintPage += new PrintPageEventHandler(GambarlayoutStruk);
-
-            // Menyambungkan mesin cetak ke dalam komponen visual layar struk (PrintPreviewControl)
-            ppcStruk.Document = prntDoc;
         }
-        // FUNGSI UTAMA: Menggambar desain struk belanja nota termal secara digital baris demi baris
+        //// FUNGSI UTAMA: Menggambar desain struk belanja nota termal secara digital baris demi baris
         private void GambarlayoutStruk(object sender, PrintPageEventArgs e)
         {
-            Graphics g = e.Graphics; // Objek g bertindak sebagai "Pena/Kuas Digital" untuk menggambar di kertas struk
+            Graphics g = e.Graphics;
+            Font fontJudul = new Font("Courier New", 11, FontStyle.Bold);
+            Font fontRegular = new Font("Courier New", 8, FontStyle.Regular);
+            float x = 10; float y = 10; float jrk = 14;
 
-            // Menyiapkan ukuran dan jenis huruf (Font) yang biasa dipakai printer struk thermal kasir
-            Font fontJudul = new Font("Courier New", 12, FontStyle.Bold);
-            Font fontRegular = new Font("Courier New", 9, FontStyle.Regular);
-            Font fontBold = new Font("Courier New", 9, FontStyle.Bold);
+            // 1. Bagian Header Struk
+            g.DrawString("      TOKO BUKU KITA      ", fontJudul, Brushes.Black, x, y); y += jrk + 5;
+            g.DrawString("==========================", fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString("No Nota : " + notaID, fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString("Kasir   : " + namaKasir, fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString("Tanggal : " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString("--------------------------", fontRegular, Brushes.Black, x, y); y += jrk;
 
-            // Mengatur koordinat batas kiri pembukuan (X) dan titik awal tinggi baris atas (Y)
-            float x = 10;
-            float y = 10;
-            float jarakBaris = 18; // Jarak lompatan spasi baris ke bawah (Line Spacing)
-
-            // Menggambar teks judul nama toko (Koordinat X, Y)
-            g.DrawString("      TOKO BUKU KITA      ", fontJudul, Brushes.Black, x, y);
-            y += jarakBaris + 5; // Lompat ke baris bawahnya
-            g.DrawString("==========================", fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-
-            // Menggambar data header nota (Nomor ID Nota transaksi dan Nama Kasir bertugas)
-            g.DrawString("No Nota : " + notaID, fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-            g.DrawString("Kasir   : " + namaKasir, fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-            g.DrawString("Tanggal : " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-            g.DrawString("--------------------------", fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-
-            // MELAKUKAN LOOPING: Membakar seluruh baris barang yang terjual dari isi keranjang belanja
+            // 2. Looping Rincian Barang Belanjaan dari DataTable POS
             foreach (DataRow row in detailBelanja.Rows)
             {
-                string judulBuku = row["Judul"].ToString();
-                // Memotong judul buku jika terlalu panjang agar tidak bablas keluar dari kertas struk kasir
-                if (judulBuku.Length > 25) judulBuku = judulBuku.Substring(0, 22) + "...";
-
+                string judul = row["Judul Buku"].ToString();
+                if (judul.Length > 20) judul = judul.Substring(0, 18) + "..";
                 int qty = Convert.ToInt32(row["Jumlah"]);
-                decimal harga = Convert.ToDecimal(row["Harga"]);
                 decimal sub = Convert.ToDecimal(row["Subtotal"]);
 
-                // Baris A: Gambar Nama Judul Buku yang dibeli konsumen
-                g.DrawString(judulBuku, fontRegular, Brushes.Black, x, y);
-                y += jarakBaris;
-
-                // Baris B: Gambar Rincian Perkalian Harga Kuantitas (Contoh: 2 x 50,000    Rp100,000)
-                g.DrawString($"  {qty} x {harga:N0}", fontRegular, Brushes.Black, x, y);
-                // Menggambar subtotal agak bergeser ke kanan (koordinat X ditambah 160) agar lurus rapi di ujung kertas
-                g.DrawString($"Rp.{sub:N0}", fontRegular, Brushes.Black, x + 160, y);
-                y += jarakBaris;
+                g.DrawString(judul, fontRegular, Brushes.Black, x, y); y += jrk;
+                g.DrawString($"  {qty} x Rp.{Convert.ToDecimal(row["Harga Satuan"]):N0}", fontRegular, Brushes.Black, x, y);
+                g.DrawString($"Rp.{sub:N0}", fontRegular, Brushes.Black, x + 160, y); y += jrk;
             }
 
-            // Menggambar footer penutup total pembayaran nota belanja kasir
-            g.DrawString("--------------------------", fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-            g.DrawString("GRAND TOTAL :", fontBold, Brushes.Black, x, y);
-            g.DrawString($"Rp.{totalBiaya:N0}", fontBold, Brushes.Black, x + 160, y);
-            y += jarakBaris + 10;
+            // 3. Bagian Footer Struk, Total Belanja, & Informasi Pembayaran Lengkap
+            g.DrawString("--------------------------", fontRegular, Brushes.Black, x, y); y += jrk;
 
-            g.DrawString("   Terima Kasih Banyak   ", fontRegular, Brushes.Black, x, y);
-            y += jarakBaris;
-            g.DrawString(" Silakan Datang Kembali  ", fontRegular, Brushes.Black, x, y);
+            g.DrawString("GRAND TOTAL :", fontJudul, Brushes.Black, x, y);
+            g.DrawString($"Rp.{totalBiaya:N0}", fontJudul, Brushes.Black, x + 140, y); y += jrk + 5;
+            g.DrawString("--------------------------", fontRegular, Brushes.Black, x, y); y += jrk;
+
+            // REVISI PENAMBAHAN TULISAN METODE BAYAR RIIL PROFESIONAL:
+            g.DrawString("METODE BAYAR:", fontRegular, Brushes.Black, x, y);
+            g.DrawString(jenisMetode, fontRegular, Brushes.Black, x + 160, y); y += jrk;
+
+            g.DrawString("TUNAI       :", fontRegular, Brushes.Black, x, y);
+            g.DrawString($"Rp.{tunaiDibayar:N0}", fontRegular, Brushes.Black, x + 160, y); y += jrk;
+
+            g.DrawString("KEMBALIAN   :", fontRegular, Brushes.Black, x, y);
+            g.DrawString($"Rp.{uangKembalian:N0}", fontRegular, Brushes.Black, x + 160, y); y += jrk + 15;
+
+            g.DrawString("   Terima Kasih Banyak   ", fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString(" Buku yang Dibeli Tidak  ", fontRegular, Brushes.Black, x, y); y += jrk;
+            g.DrawString("  Dapat Ditukar/Dikembalikan ", fontRegular, Brushes.Black, x, y);
+        
         }
     
 
