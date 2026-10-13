@@ -16,6 +16,7 @@ namespace Aplikasi
         public Form1()
         {
             InitializeComponent();
+            txtPassword.UseSystemPasswordChar = false; // Menyembunyikan teks password dengan simbol bintang
         }
         // Tombol Klik Aksi Masuk Akun (Login)
         private void Form1_Load(object sender, EventArgs e)
