@@ -42,7 +42,7 @@ namespace Aplikasi
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
 
-                // Kueri untuk melihat item apa saja yang dibeli pada nota tersebut
+                // Kueri untuk melihat item apa saja yang dibeli pada nota tersebutiojoijio
                 string queryCari = @"SELECT b.judul AS `Judul Buku Terbeli`, 
                                             td.jumlah AS `Jumlah Beli Unit`, 
                                             td.subtotal AS `Subtotal Biaya Belanja`
