@@ -85,6 +85,7 @@
             this.btnFilter.TabIndex = 4;
             this.btnFilter.Text = "FILTER";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnEkspor
             // 
@@ -95,6 +96,7 @@
             this.btnEkspor.TabIndex = 5;
             this.btnEkspor.Text = "EKSPOR PDF";
             this.btnEkspor.UseVisualStyleBackColor = true;
+            this.btnEkspor.Click += new System.EventHandler(this.btnEkspor_Click);
             // 
             // dgvLaporan
             // 

@@ -50,6 +50,7 @@
             this.Controls.Add(this.dgvRiwayatSistem);
             this.Name = "dashadmin";
             this.Text = "dashadmin";
+            this.Load += new System.EventHandler(this.FormLogAudit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatSistem)).EndInit();
             this.ResumeLayout(false);
 
