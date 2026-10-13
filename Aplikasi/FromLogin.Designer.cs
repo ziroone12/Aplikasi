@@ -51,7 +51,7 @@
             "admin",
             "kasir"});
             this.cmbRoleDaftar.Location = new System.Drawing.Point(331, 229);
-            this.cmbRoleDaftar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbRoleDaftar.Margin = new System.Windows.Forms.Padding(2);
             this.cmbRoleDaftar.Name = "cmbRoleDaftar";
             this.cmbRoleDaftar.Size = new System.Drawing.Size(149, 21);
             this.cmbRoleDaftar.TabIndex = 17;
@@ -62,7 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDaftar.Location = new System.Drawing.Point(395, 339);
-            this.btnDaftar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDaftar.Margin = new System.Windows.Forms.Padding(2);
             this.btnDaftar.Name = "btnDaftar";
             this.btnDaftar.Size = new System.Drawing.Size(84, 28);
             this.btnDaftar.TabIndex = 16;
@@ -76,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Location = new System.Drawing.Point(303, 339);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(77, 28);
             this.btnLogin.TabIndex = 15;
@@ -90,10 +90,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Location = new System.Drawing.Point(303, 187);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '#';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(177, 25);
             this.txtPassword.TabIndex = 14;
             this.txtPassword.UseSystemPasswordChar = true;
@@ -104,7 +104,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsername.Location = new System.Drawing.Point(303, 133);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(177, 25);
@@ -163,7 +163,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKodeRegistrasi.Location = new System.Drawing.Point(302, 284);
-            this.txtKodeRegistrasi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKodeRegistrasi.Margin = new System.Windows.Forms.Padding(2);
             this.txtKodeRegistrasi.Multiline = true;
             this.txtKodeRegistrasi.Name = "txtKodeRegistrasi";
             this.txtKodeRegistrasi.Size = new System.Drawing.Size(59, 25);
