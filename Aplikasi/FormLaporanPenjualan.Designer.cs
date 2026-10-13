@@ -78,7 +78,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(974, 100);
+            this.btnFilter.Location = new System.Drawing.Point(1012, 100);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(126, 35);
