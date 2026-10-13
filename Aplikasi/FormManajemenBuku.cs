@@ -34,7 +34,44 @@ namespace Aplikasi
         }
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtKode.Text) || string.IsNullOrWhiteSpace(txtJudul.Text)) return;
+            // 1. Validasi Kode Buku tidak boleh kosong
+            if (string.IsNullOrWhiteSpace(txtKode.Text))
+            {
+                MessageBox.Show("Kode Buku tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKode.Focus();
+                return;
+            }
+
+            // 2. Validasi Judul Buku tidak boleh kosong
+            if (string.IsNullOrWhiteSpace(txtJudul.Text))
+            {
+                MessageBox.Show("Judul Buku tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtJudul.Focus();
+                return;
+            }
+
+            // 3. Validasi Harga Buku tidak boleh kosong (Optional, silakan pakai jika perlu)
+            if (string.IsNullOrWhiteSpace(txtHarga.Text))
+            {
+                MessageBox.Show("Harga Buku tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtHarga.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPenerbit.Text))
+            {
+                MessageBox.Show("Penerbit tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtHarga.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPengarang.Text))
+            {
+                MessageBox.Show("Pengarang tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtHarga.Focus();
+                return;
+            }
+
 
             using (MySqlConnection conn = Koneksi.Getkoneksi())
             {

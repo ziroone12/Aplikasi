@@ -48,7 +48,20 @@ namespace Aplikasi
 
         private void btnSimpanStok_Click(object sender, EventArgs e)
         {
-            if (dgvBukuGudang.CurrentRow == null || string.IsNullOrWhiteSpace(textSimpanStok.Text)) return;
+            // 1. Validasi apakah ada baris data yang dipilih di DataGridView
+            if (dgvBukuGudang.CurrentRow == null)
+            {
+                MessageBox.Show("Silakan pilih buku yang akan ditambah stoknya terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Validasi apakah input jumlah stok masih kosong atau hanya spasi
+            if (string.IsNullOrWhiteSpace(textSimpanStok.Text))
+            {
+                MessageBox.Show("Jumlah stok tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textSimpanStok.Focus(); // Mengarahkan kursor kembali ke text box
+                return;
+            }
             int idBuku = Convert.ToInt32(dgvBukuGudang.CurrentRow.Cells["id_buku"].Value);
             string judulBuku = dgvBukuGudang.CurrentRow.Cells["judul"].Value.ToString();
             int kuantitasTambahan = Convert.ToInt32(textSimpanStok.Text);

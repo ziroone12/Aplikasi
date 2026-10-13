@@ -21,5 +21,10 @@ namespace Aplikasi
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void FormPaymentTransfer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
