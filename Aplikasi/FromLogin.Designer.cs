@@ -93,7 +93,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.PasswordChar = '#';
             this.txtPassword.Size = new System.Drawing.Size(177, 25);
             this.txtPassword.TabIndex = 14;
             this.txtPassword.UseSystemPasswordChar = true;
@@ -166,6 +166,7 @@
             this.txtKodeRegistrasi.Margin = new System.Windows.Forms.Padding(2);
             this.txtKodeRegistrasi.Multiline = true;
             this.txtKodeRegistrasi.Name = "txtKodeRegistrasi";
+            this.txtKodeRegistrasi.PasswordChar = '#';
             this.txtKodeRegistrasi.Size = new System.Drawing.Size(59, 25);
             this.txtKodeRegistrasi.TabIndex = 18;
             // 

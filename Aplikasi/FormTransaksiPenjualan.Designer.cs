@@ -87,7 +87,7 @@
             // dgvKeranjang
             // 
             this.dgvKeranjang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKeranjang.Location = new System.Drawing.Point(131, 192);
+            this.dgvKeranjang.Location = new System.Drawing.Point(131, 197);
             this.dgvKeranjang.Name = "dgvKeranjang";
             this.dgvKeranjang.RowHeadersWidth = 62;
             this.dgvKeranjang.Size = new System.Drawing.Size(724, 228);
